@@ -13,9 +13,9 @@ class App extends Component {
         super(props);
         this.state = {
             data: [
-                {name: 'John C.', salary: 800, increase: false, rise: true, id: 1},
-                {name: 'Alex M.', salary: 3000, increase: true, rise: false, id: 2},
-                {name: 'Carl W.', salary: 5000, increase: false, rise: false, id: 3}
+                {name: 'Clark Kent', salary: 1800, increase: false, rise: true, id: 1},
+                {name: 'Peter Parker', salary: 3000, increase: true, rise: false, id: 2},
+                {name: 'Tonny Stark', salary: 5000, increase: false, rise: false, id: 3}
             ],
             term: '', 
             filter: 'all'
@@ -32,20 +32,21 @@ class App extends Component {
     }
 
     addItem = (name, salary) => {
-        if (name.length < 3 || !salary) return
-        const newItem = {
-            name, 
-            salary,
-            increase: false,
-            rise: false,
-            id: this.maxId++
-        }
-        this.setState(({data}) => {
-            const newArr = [...data, newItem];
-            return {
-                data: newArr
+        if (name.length >= 3 && salary){
+            const newItem = {
+                name, 
+                salary,
+                increase: false,
+                rise: false,
+                id: this.maxId++
             }
-        });
+            this.setState(({data}) => {
+                const newArr = [...data, newItem];
+                return {
+                    data: newArr
+                }
+            });
+        } else return;
     }
 
     onToggleProp = (id, prop) => {
